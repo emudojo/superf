@@ -25,10 +25,10 @@ public class Gestion {
     private static boolean generados = false;
     private static int descuento = 0;
 
-    // Static reference to the products frame to avoid creating multiple instances
+    // Referencia estática al marco (frame) de productos para evitar crear múltiples instancias
     private static JFrame productosFrame = null;
 
-    // Static reference to the facturas frame to avoid creating multiple instances
+    // Referencia estática al marco (frame) de facturas para evitar crear múltiples instancias
     private static JFrame facturasFrame = null;
 
     // METODOS DEL MENU:

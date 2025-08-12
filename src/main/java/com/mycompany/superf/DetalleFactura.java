@@ -5,7 +5,7 @@ public class DetalleFactura {
     private Producto producto;
     private int cantidad;
     private double precio;
-    private static final double IMPUESTO = 0.13; // 13% tax rate
+    private static final double IMPUESTO = 0.13; // Tasa de impuesto del 13%
 
     public DetalleFactura(Producto producto, int cantidad, double precio) {
         this.producto = producto;
@@ -19,9 +19,9 @@ public class DetalleFactura {
     }
 
     /**
-     * Returns formatted data with customizable line breaks
-     * @param conSaltoLinea if true, adds line breaks between fields
-     * @return formatted string with product details
+     * Devuelve los datos formateados con saltos de línea opcionales
+     * @param conSaltoLinea si es true, agrega saltos de línea entre los campos
+     * @return cadena formateada con los detalles del producto
      */
     public String getDatos(boolean conSaltoLinea) {
         String saltoLinea = " ";
@@ -37,16 +37,16 @@ public class DetalleFactura {
     }
 
     /**
-     * Calculates the subtotal (price without tax)
-     * @return subtotal rounded to 2 decimal places
+     * Calcula el subtotal (precio sin impuesto)
+     * @return subtotal redondeado a 2 decimales
      */
     public double calcularSubtotal() {
         return getPrecio();
     }
 
     /**
-     * Calculates the total price including tax
-     * @return total price with tax, rounded to 2 decimal places
+     * Calcula el precio total incluyendo el impuesto
+     * @return precio total con impuesto, redondeado a 2 decimales
      */
     public double calcularTotal() {
         double total = getPrecio() * (1 + IMPUESTO);
@@ -54,16 +54,16 @@ public class DetalleFactura {
     }
 
     /**
-     * Checks if there's enough stock for the requested quantity
-     * @return true if there's enough stock, false otherwise
+     * Verifica si hay suficiente stock para la cantidad solicitada
+     * @return true si hay suficiente stock, false en caso contrario
      */
     public boolean hayStockSuficiente() {
         return producto.getStock() >= cantidad;
     }
 
     /**
-     * Updates the product stock by subtracting the quantity
-     * @return true if the stock was updated successfully, false if there's not enough stock
+     * Actualiza el stock del producto restando la cantidad
+     * @return true si el stock se actualizó correctamente, false si no hay suficiente stock
      */
     public boolean actualizarStock() {
         if (hayStockSuficiente()) {

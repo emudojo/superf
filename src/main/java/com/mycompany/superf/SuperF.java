@@ -4,25 +4,25 @@ import javax.swing.*;
 
 public class SuperF {
 
-    // Flag to indicate if we're in product editing mode
+    // Indicador para saber si estamos en modo de edición de productos
     private static boolean editingProducts = false;
 
     public static void main(String[] args) {
-        // Start the main menu loop
+        // Inicia el bucle del menú principal
         showMainMenu(null);
     }
     public static void showMainMenu() {
         showMainMenu(null);
     }
     /**
-     * Static method to display the main menu and handle user selections.
-     * This method can be called from other files to properly display the menu.
-     * It will continue to show the menu after each operation until the user chooses to exit.
+     * Método estático para mostrar el menú principal y manejar las selecciones del usuario.
+     * Este método puede ser llamado desde otros archivos para mostrar el menú correctamente.
+     * Continuará mostrando el menú después de cada operación hasta que el usuario elija salir.
      */
     public static void showMainMenu(JFrame frame) {
         int opt = 1;
 
-        // Only show the menu if we're not in product editing mode
+        // Solo mostrar el menú si no estamos en modo de edición de productos
         if (frame != null && frame.isShowing()) {
             frame.dispose();
         }
@@ -42,12 +42,12 @@ public class SuperF {
 
         int selectedOption = displayMenuOptions(menu, options);
 
-        // Convert 0-based index to 1-based for a switch statement
+        // Convertir el índice basado en 0 a basado en 1 para la sentencia switch
         opt = selectedOption + 1;
 
-        // Handle case when user closes dialog (selectedOption = -1)
+        // Manejar el caso cuando el usuario cierra el diálogo (selectedOption = -1)
         if (selectedOption == -1) {
-            opt = 9; // Treat as an exit option
+            opt = 9; // Tratar como opción de salida
         }
 
         switch (opt) {
@@ -55,11 +55,11 @@ public class SuperF {
                 Gestion.agregarProducto(null);
                 break;
             case 2:
-                // Set flag to indicate we're entering product editing mode
+                // Establecer la bandera para indicar que estamos entrando en modo edición de productos
                 Gestion.mostrarProductos();
                 break;
             case 3:
-                Gestion.buscarProducto();
+                Gestion.buscarProducto(); 
                 break;
             case 4:
                 Gestion.facturarCompra();
@@ -86,9 +86,9 @@ public class SuperF {
     }
 
     /**
-     * Public static method to display menu options using JOptionPane.
-     * This method can be called from other files to display custom menus.
-     * Uses showInputDialog with a dropdown to ensure single column layout.
+     * Método estático público para mostrar opciones de menú usando JOptionPane.
+     * Este método puede ser llamado desde otros archivos para mostrar menús personalizados.
+     * Utiliza showInputDialog con una lista desplegable para asegurar una disposición de una sola columna.
      */
     public static int displayMenuOptions(String menu, String[] options) {
         Object selectedValue = JOptionPane.showInputDialog(
@@ -101,9 +101,9 @@ public class SuperF {
                 options[0]
         );
 
-        // Find the index of the selected option
+        // Buscar el índice de la opción seleccionada
         if (selectedValue == null) {
-            return -1; // User cancelled
+            return -1; // Usuario canceló
         }
 
         for (int i = 0; i < options.length; i++) {
@@ -112,10 +112,10 @@ public class SuperF {
             }
         }
 
-        return -1; // Should not reach here
+        return -1; // No debería llegar aquí
     }
 
-    // Method to set the editing flag (can be called from Gestion class)
+    // Método para establecer la bandera de edición (se puede llamar desde la clase Gestion)
     public static void setEditingProducts(boolean editing) {
         editingProducts = editing;
     }

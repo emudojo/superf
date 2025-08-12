@@ -38,25 +38,25 @@ public class Factura {
 
     public void cerrarFactura() {
         for (int i = 0; i < cantDetalles; i++) {
-            // Update stock using the new method
+            // Actualizar el stock usando el nuevo método
             detallesFactura[i].actualizarStock();
 
-            // Create a copy of the product
+            // Crear una copia del producto
             Producto p = detallesFactura[i].getProducto();
             detallesFactura[i].setProducto(new Producto(p.getCodigo(), "COPY-" + p.getNombre(), p.getDescripcion(), p.getPrecio(), p.getStock()));
 
-            // Add the subtotal to the total
+            // Sumar el subtotal al total
             this.total += detallesFactura[i].calcularSubtotal();
         }
     }
 
     public void cerrarFacturaGenerada() {
         for (int i = 0; i < cantDetalles; i++) {
-            // Create a copy of the product
+            // Crear una copia del producto
             Producto p = detallesFactura[i].getProducto();
             detallesFactura[i].setProducto(new Producto(p.getCodigo(), "COPY-" + p.getNombre(), p.getDescripcion(), p.getPrecio(), p.getStock()));
 
-            // Add the subtotal to the total
+            // Sumar el subtotal al total
             this.total += detallesFactura[i].calcularSubtotal();
         }
     }
@@ -74,7 +74,7 @@ public class Factura {
             totalConImpuesto += detallesFactura[i].calcularTotal();
         }
 
-        // Round to 2 decimal places
+        // Redondear a 2 decimales
         subtotal = Math.round(subtotal * 100.0) / 100.0;
         totalConImpuesto = Math.round(totalConImpuesto * 100.0) / 100.0;
         double impuesto = Math.round((totalConImpuesto - subtotal) * 100.0) / 100.0;
